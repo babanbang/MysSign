@@ -28,6 +28,7 @@ export default class ApiBase {
       this.headers['x-rpc-challenge_game'] = '6'
     }
     this.option = option
+    this._res = res
   }
 
   getMysApi (mys = {}, option = {}) {
@@ -61,6 +62,8 @@ export default class ApiBase {
   }
 
   async getData (data = {}) {
+    if ([5003, 10041].includes(this._res?.retcode)) return this._res
+
     const createData = await this.create()
     const validate = await this.Geetest(createData.data)
     return await this.verify(data, validate.data)
