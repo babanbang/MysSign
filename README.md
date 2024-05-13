@@ -7,10 +7,8 @@ git clone https://github.com/babanbang/mys.git ./components/MysSign
 ```
 
 #### 如何使用
-修改karin-plugin-MysTool/components/index.js(若无此文件可以复制index_default.重命名js)
+在karin-plugin-MysTool/components/index.js中添加以下内容(若无此文件可以复制index_default.js重命名)
 ```javascript
-// export * from './MysSign/index.js'
-修改为
 export * from './MysSign/index.js'
 ```
 ---

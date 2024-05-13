@@ -63,6 +63,7 @@ export default class ApiBase {
 
   async getData (data = {}) {
     if ([5003, 10041].includes(this._res?.retcode)) return this._res
+    // todo 这里或许可能需要再请求一下数据，确定retcode是否为0
 
     const createData = await this.create()
     const validate = await this.Geetest(createData.data)
