@@ -52,12 +52,8 @@ export default class ApiTool {
     const api = {}
     _.forEach(this.api, (value, id) => {
       api[id] = value
-      api[id].query = api[id].query?.replace(/{\$gt}/g, data.gt || '')?.replace(/{\$challenge}/g, data.challenge || '')
-      if (api.body) {
-        for (const k in api.body) {
-          api[id].body[k] = api[id].body[k]?.replace(/{\$gt}/g, data.gt || '')?.replace(/{\$challenge}/g, data.challenge || '')
-        }
-      }
+      api[id].query && api[id].query(data)
+      api[id].body && api[id].body(data)
     })
     return api
   }

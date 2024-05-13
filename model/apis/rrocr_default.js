@@ -10,12 +10,12 @@ export default class RROCR extends ApiBase {
     super(args, ID, {
       geetest: {
         url: 'http://api.rrocr.com/api/recognize.html',
-        query: `appkey=${appkey}&gt={$gt}&challenge={$challenge}&referer=https://webstatic.mihoyo.com`,
+        query: (data) => { return `appkey=${appkey}&gt=${data.gt}&challenge=${data.challenge}&referer=https://webstatic.mihoyo.com` },
         HeaderType: 'noHeader'
       },
       times: {
         url: 'http://api.rrocr.com/api/integral.html',
-        query: `appkey=${appkey}`,
+        query: () => { return `appkey=${appkey}` },
         HeaderType: 'noHeader'
       }
     })
