@@ -10,14 +10,16 @@ export default class ApiBase {
   constructor (args, Id, api, option = {}) {
     this.geetest_id = Id + '_geetest'
     this.times_id = Id + '_times'
+    const Apis = {}
+    for (const key in api) {
+      Apis[Id + '_' + key] = api[key]
+      this[key + '_id'] = Id + '_' + key
+    }
 
     const { res = '', mysApi = '', type = '' } = args
-    this.mysApi = mysApi || this.getMysApi()
     this.type = type
-    this.ApiTool = new ApiTool(mysApi.game, mysApi.server, {
-      [this.geetest_id]: api.geetest,
-      [this.times_id]: api.times
-    })
+    this.mysApi = mysApi || this.getMysApi()
+    this.ApiTool = new ApiTool(mysApi.game, mysApi.server, Apis)
 
     this.GeetestApi = res?.retcode === 10035
       ? { create: 'createGeetest', verify: 'verifyGeetest' }
