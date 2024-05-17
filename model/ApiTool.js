@@ -52,8 +52,8 @@ export default class ApiTool {
     const api = {}
     _.forEach(this.api, (value, id) => {
       api[id] = value
-      api[id].query && api[id].query(data)
-      api[id].body && api[id].body(data)
+      api[id].query = api[id]?.query?.(data)
+      api[id].body = api[id]?.body?.(data)
     })
     return api
   }

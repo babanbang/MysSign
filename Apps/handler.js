@@ -29,7 +29,7 @@ export class MysValidateHandler extends plugin {
 
       for (let n = 0; n < Number(times); n++) {
         const result = await new Api(args).getData(args?.data)
-        if (result.retcode === 0 || result.isvalidate) {
+        if (result?.retcode === 0 || result?.isvalidate) {
           return result
         }
       }
