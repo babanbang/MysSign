@@ -1,5 +1,5 @@
 - name: MysSign 配置
-  file: MysSign/set.yaml
+  file: MysSign-set.yaml
   priority: 500
   view:
     -
