@@ -1,4 +1,4 @@
-import { Data } from '#Mys.tool'
+import { Data } from '#MysTool/utils'
 import chokidar from 'chokidar'
 import _ from 'lodash'
 
@@ -8,7 +8,7 @@ class ValApis {
   #watcher = {}
 
   async init (key) {
-    const api = await Data.importDefault(`apis/${key}.js`, ApiPath)
+    const api = await Data.importDefault(`apis/${key}.js`, { Path: ApiPath })
     if (!api.module) return false
 
     this.#apis[key] = api.module

@@ -13,11 +13,11 @@ git clone --depth=1 https://gitee.com/bbaban/mys.git ./components/MysSign
 ```
 
 #### 如何使用
-在karin-plugin-MysTool/components/index.js中添加以下内容(无此文件可无视)
-
-```javascript
-export * from './MysSign/index.js'
-```
+修改karin-plugin-MysTool/config/config/set.yaml
+```yaml
+plugins:
+# 添加以下内容
+  - MysSign
 ---
 
 ### 待完成功能

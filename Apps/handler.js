@@ -1,5 +1,5 @@
 import { plugin } from '#Karin'
-import { Cfg } from '#Mys.tool'
+import { Cfg } from '#MysTool/utils'
 import ValApis from '../model/ValApis.js'
 
 export class MysValidateHandler extends plugin {

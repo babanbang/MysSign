@@ -1,9 +1,9 @@
 import ApiTool from '../ApiTool.js'
-import { MysApi } from '#Mys.api'
+import { MysApi } from '#MysTool/mys'
 
 export default class ApiBase {
   /**
-   * @param {{mysApi: import('#Mys.api').MysApi}} args
+   * @param {{mysApi: import('#MysTool/mys').MysApi}} args
    * @param {{geetest:{url,query?,body?,HeaderType?},times?:{url,query?,body?,HeaderType?}}} api
    * @param {{timeout?:number}} option
    */
