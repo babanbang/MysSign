@@ -2,7 +2,7 @@
 
 #### 克隆仓库
 karin-plugin-MysTool目录执行以下命令克隆仓库到本地
->根据你的网络选择使用GitHub或Gitee
+>根据你的网络选择使用`GitHub`或`Gitee`
 1. 使用GitHub
 ```bash
 git clone --depth=1 https://github.com/babanbang/MysSign.git ./components/MysSign
@@ -19,6 +19,7 @@ git clone --depth=1 https://gitee.com/bbaban/MysSign.git ./components/MysSign
 plugins:
 # 添加以下内容
   - MysSign
+```
 ---
 
 ### 待完成功能
