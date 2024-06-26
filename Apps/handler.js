@@ -1,4 +1,4 @@
-import { plugin } from '#Karin'
+import { plugin } from 'node-Karin'
 import { Cfg } from '#MysTool/utils'
 import ValApis from '../model/ValApis.js'
 
