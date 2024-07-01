@@ -14,7 +14,7 @@ export default class TTOCR extends ApiBase {
         HeaderType: 'noHeader'
       },
       times: {
-        url: 'http://api.ttocr.com/api/integral.html',
+        url: 'http://api.ttocr.com/api/points',
         query: () => { return `appkey=${appkey}` },
         HeaderType: 'noHeader'
       }
