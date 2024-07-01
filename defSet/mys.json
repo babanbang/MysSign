@@ -1,0 +1,86 @@
+[
+  {
+    "game":"bh3",
+    "signId": "1",
+    "forumId": "1",
+    "name": "崩坏3",
+    "act_id": "e202306201626331",
+    "os_act_id": "",
+    "otherName": [
+      "bh3",
+      "崩崩崩",
+      "崩坏3"
+    ]
+  },
+  {
+    "game": "gs",
+    "signId": "2",
+    "forumId": "26",
+    "name": "原神",
+    "act_id": "e202311201442471",
+    "os_act_id": "e202102251931481",
+    "otherName": [
+      "原神"
+    ]
+  },
+  {
+    "game": "bh2",
+    "signId": "3",
+    "forumId": "30",
+    "name": "崩坏2",
+    "os_act_id": "",
+    "otherName": [
+      "bh2",
+      "崩崩",
+      "崩坏2"
+    ]
+  },
+  {
+    "game": "wd",
+    "signId": "4",
+    "forumId": "37",
+    "name": "未定事件簿",
+    "act_id": "e202009291139501",
+    "os_act_id": "",
+    "otherName": [
+      "事件簿",
+      "未定事件簿",
+      "未定"
+    ]
+  },
+  {
+    "game": "dby",
+    "signId": "5",
+    "forumId": "34",
+    "name": "大别野",
+    "otherName": [
+      "大别野"
+    ]
+  },
+  {
+    "game": "sr",
+    "signId": "6",
+    "forumId": "52",
+    "name": "崩坏星穹铁道",
+    "act_id": "e202304121516551",
+    "os_act_id": "e202303301540311",
+    "otherName": [
+      "sr",
+      "星铁",
+      "穹轨",
+      "崩坏星穹铁道"
+    ]
+  },
+  {
+    "game": "zzz",
+    "signId": "8",
+    "forumId": "57",
+    "name": "绝区零",
+    "act_id": "",
+    "os_act_id": "",
+    "otherName": [
+      "绝区零",
+      "zzz"
+    ]
+  }
+]

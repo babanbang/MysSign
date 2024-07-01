@@ -1,4 +1,4 @@
-import ApiTool from '../ApiTool.js'
+import ApiTool from '../mys/ApiTool.js'
 import { MysApi } from '#MysTool/mys'
 
 export default class ApiBase {
@@ -17,6 +17,8 @@ export default class ApiBase {
     }
 
     const { res = '', mysApi = '', type = '' } = args
+    this.e = args.e || {}
+
     this.type = type
     this.mysApi = mysApi || this.getMysApi()
     this.ApiTool = new ApiTool(mysApi.game, mysApi.server, Apis)
@@ -40,7 +42,8 @@ export default class ApiBase {
   async create () {
     return await this.mysApi.getData(this.GeetestApi.create, {
       ApiTool: this.ApiTool,
-      headers: this.headers
+      headers: this.headers,
+      option: { log: false }
     })
   }
 
@@ -50,7 +53,8 @@ export default class ApiBase {
     const res = await this.mysApi.getData(this.GeetestApi.verify, {
       ...verify,
       ApiTool: this.ApiTool,
-      headers: this.headers
+      headers: this.headers,
+      option: { log: false }
     })
 
     data.headers = {
@@ -72,14 +76,18 @@ export default class ApiBase {
     return await this.verify(data, validate.data)
   }
 
-  /** @param {{gt,challenge}} data  */
+  /**
+   *  @param {{gt,challenge}} data 
+   *  @returns {Promise<{data: {gt?,challenge,validate}}>}
+   */
   async Geetest (data) {
     if (!data.challenge || !data.gt) return false
 
     return await this.mysApi.getData(this.geetest_id, {
       ...data,
       timeout: this.option.timeout || 30000,
-      ApiTool: this.ApiTool
+      ApiTool: this.ApiTool,
+      option: { log: false }
     })
   }
 }

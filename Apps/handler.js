@@ -11,6 +11,10 @@ export class MysValidateHandler extends plugin {
         {
           key: 'mys.req.validate',
           fnc: 'mysReqValidate'
+        },
+        {
+          key: 'mys.req.geetest',
+          fnc: 'Geetest'
         }
       ]
     })
@@ -27,11 +31,36 @@ export class MysValidateHandler extends plugin {
       const Api = await ValApis.get(key)
       if (!Api) continue
 
+      const api = new Api(args)
+      if (!api.getData) continue
+
       for (let n = 0; n < Number(times); n++) {
-        const result = await new Api(args).getData(args?.data)
+        const result = await api.getData(args?.data)
         if (result?.retcode === 0 || result?.isvalidate) {
           return result
         }
+      }
+    }
+
+    return false
+  }
+
+  async Geetest (args, reject) {
+    if (!args?.data?.gt || !args?.data?.challenge) {
+      return reject()
+    }
+
+    for (const i of this.set.Apis || []) {
+      const [key, times = 1] = i.split(':')
+      const Api = await ValApis.get(key)
+      if (!Api) continue
+
+      const api = new Api(args)
+      if (!api.Geetest) continue
+
+      const result = await api.Geetest(args.data)
+      if (result?.data?.challenge && result?.data.validate) {
+        return result.data
       }
     }
 

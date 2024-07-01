@@ -1,2 +1,8 @@
 # 启用的API列表，格式为：api(apis中的文件名):重试次数(默认1)
 Apis: []
+
+# 米游社签到任务开关(签到时间请修改MysSign-cron.yaml)
+signTask: false
+
+# 社区签到任务开关(签到时间请修改MysSign-cron.yaml)
+bbsSignTask: false

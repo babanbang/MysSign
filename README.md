@@ -1,3 +1,4 @@
+> [!TIP]
 > 请先确保你已经安装了[Karin](https://github.com/KarinJS/Karin)、[karin-plugin-MysTool](../../../karin-plugin-MysTool)
 
 #### 克隆仓库
@@ -23,5 +24,6 @@ plugins:
 ---
 
 ### 待完成功能
-- [ ] mys签到
+- [x] 米游社签到福利
+- [ ] 米游社社区签到
 - [x] ~~更多API(请自行编写、本插件仅提供一个作为示范)~~
