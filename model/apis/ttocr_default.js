@@ -5,16 +5,16 @@ import ApiBase from './ApiBase.js'
 const appkey = ''
 
 /*
-388	三代全类别
-31	三代无感
-32	三代滑块
-33	三代点字
-34	三代点图
-35	三代语
-36	三代推理
-37	三代九宫格
+388	三代全类别	10
+31	三代无感		5
+32	三代滑块		5
+33	三代点字		5
+34	三代点图		5
+35	三代语序		5
+36	三代推理		10
+37	三代九宫格	10
 */
-const itemid = ''
+const itemid = '388'
 
 const ID = 'ttocr'
 export default class TTOCR extends ApiBase {
