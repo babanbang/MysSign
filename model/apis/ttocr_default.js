@@ -1,8 +1,19 @@
 // 这是一个示范，如果要使用请重命名为ttocr.js
 import ApiBase from './ApiBase.js'
 
-/** http://www.ttocr.com/ */
+/* http://www.ttocr.com/ */
 const appkey = ''
+
+/*
+388	三代全类别
+31	三代无感
+32	三代滑块
+33	三代点字
+34	三代点图
+35	三代语
+36	三代推理
+37	三代九宫格
+*/
 
 const ID = 'ttocr'
 export default class TTOCR extends ApiBase {
