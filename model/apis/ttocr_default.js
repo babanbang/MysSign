@@ -24,7 +24,7 @@ export default class TTOCR extends ApiBase {
   static async times () {
     const ttocr = new TTOCR()
     const result = await ttocr.mysApi.getData(ttocr.times_id)
-    if (result?.status === 0) {
+    if (result?.status === 1) {
       return {
         api: ID,
         integral: result.integral
