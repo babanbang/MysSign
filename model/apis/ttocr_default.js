@@ -14,6 +14,7 @@ const appkey = ''
 36	三代推理
 37	三代九宫格
 */
+const itemid = ''
 
 const ID = 'ttocr'
 export default class TTOCR extends ApiBase {
@@ -21,7 +22,7 @@ export default class TTOCR extends ApiBase {
     super(args, ID, {
       geetest: {
         url: 'http://api.ttocr.com/api/recognize',
-        query: (data) => { return `appkey=${appkey}&gt=${data.gt}&challenge=${data.challenge}&itemid=388&referer=https://webstatic.mihoyo.com` },
+        query: (data) => { return `appkey=${appkey}&gt=${data.gt}&challenge=${data.challenge}&itemid=${itemid}&referer=https://webstatic.mihoyo.com` },
         HeaderType: 'noHeader'
       },
       times: {
