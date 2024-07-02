@@ -1,6 +1,5 @@
 import { Data } from '#MysTool/utils'
 import chokidar from 'chokidar'
-import _ from 'lodash'
 
 const ApiPath = import.meta.url
 class ValApis {

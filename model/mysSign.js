@@ -1,8 +1,8 @@
-import { Bot, common, handler, redis, logger, config } from "#Karin"
 import { MysApi, MysUtil } from "#MysTool/mys"
-import { User, MysUser } from "#MysTool/user"
+import { MysUser, User } from "#MysTool/user"
 import { Base, Cfg, Data } from "#MysTool/utils"
-import _ from "lodash"
+import { Bot, common, config, handler, logger, redis } from "node-karin"
+import lodash from 'lodash'
 import moment from 'moment'
 
 let NoSignNum = 0
@@ -90,8 +90,8 @@ export default class MysSign extends Base {
 
     if (signInfo.retcode == -100 || (signInfo.retcode !== 0 && signInfo.message?.includes?.('请登录后重试'))) {
       if (!mys.isUp) {
-        const ck = await MysUser.delCK(mys.ltuid)
-        if (ck) return { ck: [{ ...mys, ck, isUp: true }, game] }
+        const mysUser = await MysUser.delCK(mys.ltuid)
+        if (mysUser.ck) return { ck: [{ ...mys, ck: mysUser.ck, isUp: true }, game] }
       }
       logger.error(`[${game.name}签到失败]${log} 绑定cookie已失效`)
       return {
@@ -134,8 +134,8 @@ export default class MysSign extends Base {
 
     if (sign?.retcode && sign?.retcode === -100) {
       if (!mys.isUp) {
-        const ck = await MysUser.delCK(mys.ltuid)
-        if (ck) return { ck: [{ ...mys, ck, isUp: true }, game] }
+        const mysUser = await MysUser.delCK(mys.ltuid)
+        if (mysUser.ck) return { ck: [{ ...mys, ck: mysUser.ck, isUp: true }, game] }
       }
       logger.error(`[${game.name}签到失败]${log} 绑定cookie已失效`)
       return {
@@ -177,7 +177,7 @@ export default class MysSign extends Base {
       sign = await mysApi.getData('sign')
       signMsg = sign?.message ?? 'Too Many Requests'
     } else {
-      await common.sleep(_.random(2000, 6000))
+      await common.sleep(lodash.random(2000, 6000))
     }
 
     if (!sign || signMsg === 'Too Many Requests') {
@@ -280,7 +280,7 @@ export default class MysSign extends Base {
       return false
     }
 
-    const cks = _.fromPairs(MysUtil.games.map(game => [game.key, []]))
+    const cks = lodash.fromPairs(MysUtil.games.map(game => [game.key, []]))
     await MysUser.forEach(mys => {
       const ck = mys.getLtuidData()
       MysUtil.eachGame((game, ds) => {
@@ -291,7 +291,7 @@ export default class MysSign extends Base {
       })
     })
 
-    const length = _.flattenDeep(Object.values(cks)).length / 2
+    const length = lodash.flattenDeep(Object.values(cks)).length / 2
     const { noSignNum, msgs } = await this.getSignNum(cks, length)
     if (length === 0 || noSignNum === 0) {
       if (manual) this.e.reply('当前暂无ck需要签到')
@@ -316,7 +316,7 @@ export default class MysSign extends Base {
       Bot.sendMsg('', { scene: 'friend', peer: config.master[0] }, StarthMsg.join('\n'))
     }
 
-    const gameMap = _.fromPairs(MysUtil.games.map((game) => [game.key, 0]))
+    const gameMap = lodash.fromPairs(MysUtil.games.map((game) => [game.key, 0]))
     for (const key of ['suc', 'finsh', 'fail', 'invalid']) {
       this[key + 'Num'] = { ...gameMap }
     }
@@ -382,7 +382,7 @@ export default class MysSign extends Base {
       const len = cks[game].length
       await Data.forEach(cks[game], async ([ck, ds]) => {
         if (await redis.get(`${this.redisPrefix}${game}:is_sign:${ck.uid}`)) {
-          _.pull(cks[game], [ck, ds])
+          lodash.pull(cks[game], [ck, ds])
           signNum++
         }
       })

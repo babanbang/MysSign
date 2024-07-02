@@ -1,9 +1,9 @@
-import { ApiTool, MysTool, MysUtil } from "#MysTool/mys"
+import { ApiTool, MysTool } from "#MysTool/mys"
 import { Data } from "#MysTool/utils"
-import _ from "lodash"
+import lodash from 'lodash'
 
 const ForumDatas = Data.readJSON('lib/components/MysSign/defSet/mys.json')
-const Forum = _.keyBy(ForumDatas, 'game')
+const Forum = lodash.keyBy(ForumDatas, 'game')
 
 for (const game of ['gs', 'sr']) {
   ApiTool.setApiMap(game, function (data) {

@@ -1,6 +1,6 @@
 import { Base, Data } from "#MysTool/utils"
 import { MysInfo, MysUtil } from "#MysTool/mys"
-import _ from "lodash"
+import lodash from 'lodash'
 
 const userSign = {}
 let BbsSignIng = false

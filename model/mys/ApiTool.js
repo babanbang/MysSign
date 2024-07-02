@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import lodash from 'lodash'
 
 export default class ApiTool {
   constructor (game, server, api = {}) {
@@ -50,10 +50,10 @@ export default class ApiTool {
     if (!data.gt || !data.challenge) return this.api
 
     const api = {}
-    _.forEach(this.api, (value, id) => {
+    lodash.forEach(this.api, (value, id) => {
       api[id] = value
-      api[id].query = api[id]?.query?.(data)
-      api[id].body = api[id]?.body?.(data)
+      api[id].query = api[id]?.query?.call?.(this, data)
+      api[id].body = api[id]?.body?.call?.(this, data)
     })
     return api
   }

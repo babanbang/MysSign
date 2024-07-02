@@ -13,14 +13,6 @@ git clone --depth=1 https://github.com/babanbang/MysSign.git ./lib/components/My
 git clone --depth=1 https://gitee.com/bbaban/MysSign.git ./lib/components/MysSign
 ```
 
-#### 如何使用
-修改karin-plugin-MysTool/config/config/set.yaml
-> (若无此文件请先启动Karin或手动复制karin-plugin-MysTool/config/defSet/set.yaml)
-```yaml
-plugins:
-# 添加以下内容
-  - MysSign
-```
 ---
 
 ### 待完成功能
