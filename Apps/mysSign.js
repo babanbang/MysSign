@@ -24,7 +24,7 @@ export const Task = karin.task(
   '米游社签到任务',
   Cfg.getConfig('cron', 'sign').signTask || '0 2 6 * * ?',
   () => {
-    new MysSign({}).signTask(false)
+    new MysSign().signTask(false)
     return true
   }
 )

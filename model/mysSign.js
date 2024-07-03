@@ -10,7 +10,7 @@ let FinishTime = ''
 const userSign = {}
 let MysSignIng = false
 export default class MysSign extends Base {
-  constructor (e) {
+  constructor (e = {}) {
     super(e, 'sign')
     this.set = Cfg.getConfig('set', this.game)
   }

@@ -7,7 +7,7 @@ let BbsSignIng = false
 let ForumData = {}
 const reg = Object.values(MysUtil.reg).join('|')
 export default class BbsSign extends Base {
-  constructor (e) {
+  constructor (e = {}) {
     super(e, 'sign')
     if (!ForumData) ForumData = Data.readJSON(`${this.GamePath()}defSet/mys.json`)
   }
