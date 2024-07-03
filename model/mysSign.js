@@ -130,7 +130,7 @@ export default class MysSign extends Base {
     }
 
     /**签到 */
-    const sign = await this.doSign(mysApi, game, log)
+    const sign = await this.doSign(mysApi, log)
 
     if (sign?.retcode && sign?.retcode === -100) {
       if (!mys.isUp) {
@@ -146,7 +146,7 @@ export default class MysSign extends Base {
     }
 
     if (sign.success) {
-      const totalSignDay = SignInfo.total_sign_day
+      let totalSignDay = SignInfo.total_sign_day
       if (!SignInfo.is_sign) totalSignDay++
       this.setCache(totalSignDay, key)
 
@@ -168,7 +168,7 @@ export default class MysSign extends Base {
     }
   }
 
-  async doSign (mysApi, game, log) {
+  async doSign (mysApi, log) {
     let sign = await mysApi.getData('sign')
     let signMsg = sign?.message ?? 'Too Many Requests'
 
