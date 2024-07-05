@@ -11,21 +11,47 @@ for (const game of ['gs', 'sr']) {
       sign: {
         url: `${MysTool.web_api}event/luna/sign`,
         body: { lang: 'zh-cn', act_id: Forum[game].act_id, region: this.server, uid: this.uid },
+        header: game == 'gs' ? { "x-rpc-signgame": "hk4e" } : {},
         HeaderType: 'MysSign'
       },
       sign_info: {
         url: `${MysTool.web_api}event/luna/info`,
         query: `lang=zh-cn&region=${this.server}&act_id=${Forum[game].act_id}&uid=${this.uid}`,
+        header: game == 'gs' ? { "x-rpc-signgame": "hk4e" } : {},
         HeaderType: 'MysSign'
       },
       sign_home: {
         url: `${MysTool.web_api}event/luna/home`,
         query: `lang=zh-cn&act_id=${Forum[game].act_id}`,
+        header: game == 'gs' ? { "x-rpc-signgame": "hk4e" } : {},
         HeaderType: 'MysSign'
       }
     }
   }, 'mys')
 }
+
+ApiTool.setApiMap('zzz', function (data) {
+  return {
+    sign: {
+      url: `${MysTool.act_nap_api}event/luna/zzz/sign`,
+      body: { lang: 'zh-cn', act_id: Forum['zzz'].act_id, region: this.server, uid: this.uid },
+      header: { "x-rpc-signgame": "zzz" },
+      HeaderType: 'MysSign'
+    },
+    sign_info: {
+      url: `${MysTool.act_nap_api}event/luna/zzz/info`,
+      query: `lang=zh-cn&region=${this.server}&act_id=${Forum['zzz'].act_id}&uid=${this.uid}`,
+      header: { "x-rpc-signgame": "zzz" },
+      HeaderType: 'MysSign'
+    },
+    sign_home: {
+      url: `${MysTool.act_nap_api}event/luna/zzz/home`,
+      query: `lang=zh-cn&act_id=${Forum['zzz'].act_id}`,
+      header: { "x-rpc-signgame": "zzz" },
+      HeaderType: 'MysSign'
+    }
+  }
+}, 'mys')
 
 ApiTool.setApiMap('bbs', function (data) {
   return {
@@ -84,17 +110,17 @@ ApiTool.setApiMap('gs', function (data) {
   return {
     sign: {
       url: `${MysTool.os_hk4e_sg_api}event/sol/sign`,
-      body: { act_id: Forum.gs.os_act_id, region: this.server, uid: this.uid },
+      body: { act_id: Forum['gs'].os_act_id, region: this.server, uid: this.uid },
       HeaderType: 'os_MysSign'
     },
     sign_info: {
       url: `${MysTool.os_hk4e_sg_api}event/sol/info`,
-      query: `act_id=${Forum.gs.os_act_id}&region=${this.server}&uid=${this.uid}`,
+      query: `act_id=${Forum['gs'].os_act_id}&region=${this.server}&uid=${this.uid}`,
       HeaderType: 'os_MysSign'
     },
     sign_home: {
       url: `${MysTool.os_hk4e_sg_api}event/sol/home`,
-      query: `act_id=${Forum.gs.os_act_id}&region=${this.server}&uid=${this.uid}`,
+      query: `act_id=${Forum['gs'].os_act_id}&region=${this.server}&uid=${this.uid}`,
       HeaderType: 'os_MysSign'
     }
   }
@@ -104,17 +130,37 @@ ApiTool.setApiMap('sr', function (data) {
   return {
     sign: {
       url: `${MysTool.os_public_sg_api}event/luna/os/sign`,
-      body: { act_id: Forum.sr.os_act_id, region: this.server, uid: this.uid },
+      body: { act_id: Forum['sr'].os_act_id, region: this.server, uid: this.uid },
       HeaderType: 'os_MysSign'
     },
     sign_info: {
       url: `${MysTool.os_public_sg_api}event/luna/os/info`,
-      query: `act_id=${Forum.sr.os_act_id}&region=${this.server}&uid=${this.uid}`,
+      query: `act_id=${Forum['sr'].os_act_id}&region=${this.server}&uid=${this.uid}`,
       HeaderType: 'os_MysSign'
     },
     sign_home: {
       url: `${MysTool.os_public_sg_api}event/luna/os/home`,
-      query: `act_id=${Forum.sr.os_act_id}&region=${this.server}&uid=${this.uid}`,
+      query: `act_id=${Forum['sr'].os_act_id}&region=${this.server}&uid=${this.uid}`,
+      HeaderType: 'os_MysSign'
+    }
+  }
+}, 'hoyolab')
+
+ApiTool.setApiMap('zzz', function (data) {
+  return {
+    sign: {
+      url: `${MysTool.os_act_nap_api}event/luna/zzz/os/sign`,
+      body: { act_id: Forum['zzz'].os_act_id, region: this.server, uid: this.uid },
+      HeaderType: 'os_MysSign'
+    },
+    sign_info: {
+      url: `${MysTool.os_act_nap_api}event/luna/zzz/os/info`,
+      query: `act_id=${Forum['zzz'].os_act_id}&region=${this.server}&uid=${this.uid}`,
+      HeaderType: 'os_MysSign'
+    },
+    sign_home: {
+      url: `${MysTool.os_act_nap_api}event/luna/zzz/os/home`,
+      query: `act_id=${Forum['zzz'].os_act_id}&region=${this.server}&uid=${this.uid}`,
       HeaderType: 'os_MysSign'
     }
   }

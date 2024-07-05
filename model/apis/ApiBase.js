@@ -31,6 +31,9 @@ export default class ApiBase {
     if (mysApi.game === 'sr') {
       this.headers['x-rpc-challenge_game'] = '6'
     }
+    if (mysApi.game === 'zzz') {
+      this.headers['x-rpc-challenge_game'] = '8'
+    }
     this.option = option
     this._res = res
   }
