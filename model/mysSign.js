@@ -275,7 +275,7 @@ export default class MysSign extends Base {
         this.e.reply(`当前剩余${NoSignNum}个\n预计需要：${this.countTime(time)}\n预计完成时间：${FinishTime}`)
       }
       return false
-    } else if (!this.e.msg.includes('开始') && manual) {
+    } else if (manual && !this.e.msg.includes('开始')) {
       this.e.reply('当前暂无签到任务')
       return false
     }
